@@ -27,7 +27,6 @@ camera.start_preview()
 # Camera warm-up time
 sleep(2)
 camera.capture(my_stream, 'jpeg')
-image.save(my_stream, 'PNG')
 base64S = base64.b64encode(my_stream.getvalue()).decode()
 print(base64S)
 
