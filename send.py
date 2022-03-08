@@ -2,6 +2,7 @@ from io import BytesIO
 from time import sleep
 from picamera import PiCamera
 import base64
+from PIL import Image
 
 image = Image.new("RGB", (300, 50))
 # Create an in-memory stream
