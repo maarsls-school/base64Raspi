@@ -11,5 +11,5 @@ camera.start_preview()
 # Camera warm-up time
 sleep(2)
 camera.capture(my_stream, 'jpeg')
-base64S = base64.b64decode(my_stream)
+base64S = base64.b64decode(my_stream.getValue())
 print(base64S)
