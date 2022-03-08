@@ -3,6 +3,7 @@ from time import sleep
 from picamera import PiCamera
 import base64
 
+image = Image.new("RGB", (300, 50))
 # Create an in-memory stream
 my_stream = BytesIO()
 camera = PiCamera()
@@ -10,5 +11,6 @@ camera.start_preview()
 # Camera warm-up time
 sleep(10)
 camera.capture(my_stream, 'jpeg')
+image.save(my_stream, 'PNG')
 base64S = base64.b64encode(my_stream.getValue())
-print(base64S)
+print(image)
