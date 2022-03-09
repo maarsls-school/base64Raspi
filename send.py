@@ -2,7 +2,6 @@ from io import BytesIO
 from time import sleep
 from picamera import PiCamera
 import base64
-from PIL import Image
 
 import base64
 import requests
@@ -19,7 +18,6 @@ def decode_Base64(fName, data):
         decoded_data = base64.decodebytes(data_base64)
         file.write(decoded_data)
 
-image = Image.new("RGB", (300, 50))
 # Create an in-memory stream
 my_stream = BytesIO()
 camera = PiCamera()
