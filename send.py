@@ -28,7 +28,7 @@ camera.capture(my_stream, 'jpeg')
 base64S = base64.b64encode(my_stream.getvalue()).decode()
 print(base64S)
 
-j = {'name': 'image', 'ext': 'png', 'data': enc, 'desc': 'This is an example image'}
+j = {'name': 'image', 'ext': 'png', 'data': base64S, 'desc': 'This is an example image'}
 print(j)
 response = requests.put('http://3.66.167.52:5000/img_meta/0' , json=j)
 print(response)
