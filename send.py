@@ -21,16 +21,19 @@ def decode_Base64(fName, data):
 # Create an in-memory stream
 my_stream = BytesIO()
 camera = PiCamera()
-camera.start_preview()
+# camera.start_preview()
 # Camera warm-up time
 sleep(2)
 camera.capture(my_stream, 'jpeg')
 base64S = base64.b64encode(my_stream.getvalue()).decode()
 print(base64S)
 
-j = {'name': 'image', 'ext': 'png', 'data': base64S, 'desc': 'This is an example image'}
+j = {'name': 'image', 'ext': 'png', 'data': enc, 'desc': 'This is an example image'}
+print(j)
 response = requests.put('http://3.66.167.52:5000/img_meta/0' , json=j)
 print(response)
+res_json = response.json()
+print(res_json)
 
 response = requests.get('http://ec2-3-66-167-52.eu-central-1.compute.amazonaws.com:5000/img_meta/19')
 res_json = response.json()
