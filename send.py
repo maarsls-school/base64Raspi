@@ -2,8 +2,7 @@ from io import BytesIO
 from time import sleep
 from picamera import PiCamera
 import base64
-
-import base64
+import paho.mqtt.client as mqtt
 import requests
 
 def encode_base64(fName):
@@ -39,3 +38,7 @@ response = requests.get('http://ec2-3-66-167-52.eu-central-1.compute.amazonaws.c
 res_json = response.json()
 print(res_json)
 decode_Base64('test_files/htl-logo-from-server3.png', res_json['data'])
+
+client = mqtt.Client('88ac22e6-4ae5-4d3f-8531-358157de95d5')
+client.connect('3.66.167.52')
+client.publish("foto/taken/dev0",{"info":"imageTaken"})
